@@ -30,7 +30,7 @@ function getApiInfo() {
             const gifAnimate = response.data[i].images.fixed_height.url;
             const gifImage = $("<img>").attr("src", gifStill).attr("class", "gif").attr("data-state", "still").attr("data-still", gifStill).attr("data-animate", gifAnimate);
             comicDiv.append(gifImage);
-            const rating = response.data[i].images.rating;
+            const rating = response.data[i].rating;
             const ratingText = $("<p>").text("Rating: " + rating);
             comicDiv.append(ratingText);
             $("#gif-area").prepend(comicDiv);

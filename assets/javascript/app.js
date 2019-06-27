@@ -9,6 +9,7 @@ function createButtons() {
         const a = $("<button>");
         a.text(topics[i]);
         a.attr("data-name", topics[i]);
+        a.addClass("topicButton");
         $("#buttonArea").append(a);
     }
 };
@@ -23,7 +24,17 @@ function getApiInfo() {
         method: "GET"
     }).then(function (response) {
         console.log(response);
-        // $("#gifArea").text(JSON.stringify(response));
+        for (let i = 0; i < response.data.length; i++){
+        const comicDiv = $("<div class='comic'>");
+        const gifImage = response.data[i].images.fixed_height_still.url;
+        const itemOne = $("<img>").attr("src", gifImage);
+        comicDiv.append(itemOne);
+        const rating = response.data[i].images.rating;
+        const itemTwo = $("<p>").text("Rating: " + rating);
+        comicDiv.append(itemTwo);
+
+        $("#gifArea").prepend(comicDiv);
+        }
     });
 }
 
@@ -35,5 +46,5 @@ function getApiInfo() {
 
 // input box to add new buttons to topics array and remakes the buttons on the page
 
+$(document).on("click", ".topicButton", getApiInfo); 
 createButtons();
-getApiInfo();

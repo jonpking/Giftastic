@@ -1,6 +1,6 @@
 
 // array of search strings
-const topics = ["batman", "spider-man", "x-men"];
+const topics = ["BATMAN", "SPIDER-MAN", "X-MEN"];
 
 // creates a button on the page for each item in the topics array
 function createButtons() {
@@ -31,7 +31,7 @@ function getApiInfo() {
             const gifImage = $("<img>").attr("src", gifStill).attr("class", "gif").attr("data-state", "still").attr("data-still", gifStill).attr("data-animate", gifAnimate);
             comicDiv.append(gifImage);
             const rating = response.data[i].rating;
-            const ratingText = $("<p>").text("Rating: " + rating);
+            const ratingText = $("<p>").text("^ Rating: " + rating);
             comicDiv.append(ratingText);
             $("#gif-area").prepend(comicDiv);
         }
@@ -53,7 +53,7 @@ function animateGif() {
 // input box to add new buttons to topics array and remakes the buttons on the page
 function addComic() {
     event.preventDefault();
-    const comic = $("#comic-input").val().trim();
+    const comic = $("#comic-input").val().toUpperCase().trim();
     topics.push(comic);
     createButtons();
 }

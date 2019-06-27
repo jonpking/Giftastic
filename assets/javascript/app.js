@@ -4,13 +4,13 @@ const topics = ["batman", "spider-man", "x-men"];
 
 // creates a button on the page for each item in the topics array
 function createButtons() {
-    $("buttonArea").empty();
+    $("#button-area").empty();
     for (let i = 0; i < topics.length; i++) {
         const a = $("<button>");
         a.text(topics[i]);
         a.attr("data-name", topics[i]);
         a.addClass("topicButton");
-        $("#buttonArea").append(a);
+        $("#button-area").append(a);
     }
 };
 
@@ -33,7 +33,7 @@ function getApiInfo() {
             const rating = response.data[i].images.rating;
             const ratingText = $("<p>").text("Rating: " + rating);
             comicDiv.append(ratingText);
-            $("#gifArea").prepend(comicDiv);
+            $("#gif-area").prepend(comicDiv);
         }
     });
 }
@@ -51,7 +51,14 @@ function animateGif() {
 };
 
 // input box to add new buttons to topics array and remakes the buttons on the page
+function addComic() {
+    event.preventDefault();
+    const comic = $("#comic-input").val().trim();
+    topics.push(comic);
+    createButtons();
+}
 
+$(document).on("click", "#add-comic", addComic);
 $(document).on("click", ".gif", animateGif);
 $(document).on("click", ".topicButton", getApiInfo);
 createButtons();

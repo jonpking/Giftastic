@@ -66,6 +66,7 @@ hr {
 
 #gif-area {
     text-align: center;
+    margin: 0 5% 0 5%;
 }
 
 .gif {
@@ -75,4 +76,9 @@ hr {
 p {
     color: blanchedalmond;
     margin: 0 0 5px 0;
+}
+
+.comic  {
+    float: left;
+    margin: 5px;
 }

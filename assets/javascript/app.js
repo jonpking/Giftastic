@@ -17,7 +17,7 @@ function createButtons() {
 // uses ajax call to pull gifs from giphy api and displays them, along with their ratings, to the page
 function getApiInfo() {
     const comic = $(this).attr("data-name");
-    const queryURL = "http://api.giphy.com/v1/gifs/search?api_key=W5rOVNC5OWIuMkDJ3o5vDoDBxFuqcCv7&limit=10&q=" + comic;
+    const queryURL = "https://api.giphy.com/v1/gifs/search?api_key=W5rOVNC5OWIuMkDJ3o5vDoDBxFuqcCv7&limit=10&q=" + comic;
 
     $.ajax({
         url: queryURL,
